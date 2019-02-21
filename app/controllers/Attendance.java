@@ -343,8 +343,8 @@ public class Attendance extends Controller {
 
         if (!person_ids.isEmpty()) {
             String sql = "select dst_id, swipe_day, " +
-                    "min(in_time) at time zone :time_zone as in_time, " +
-                    "max(out_time) at time zone :time_zone as out_time " +
+                    "min(rounded_in_time) at time zone :time_zone as in_time, " +
+                    "max(rounded_out_time) at time zone :time_zone as out_time " +
                     "from overseer.swipes sw join overseer.students stu on sw.student_id=stu._id " +
                     "where in_time is not null and out_time is not null " +
                     "and dst_id in (:person_ids) " +
